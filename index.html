@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Pilihan & Tanggal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        select, input[type="date"], button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #007acc;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #005999;
+        }
+        .output {
+            margin-top: 20px;
+            background: #e6f7ff;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Form Pilihan dan Tanggal</h2>
+    <form id="dataForm">
+        <label for="pilihan">Pilih Jurusan:</label>
+        <select id="pilihan" name="jurusan" required>
+            <option value="" disabled selected>-- Pilih Jurusan --</option>
+            <option value="Informatika">Informatika</option>
+            <option value="Sistem Informasi">Sistem Informasi</option>
+            <option value="Teknik Komputer">Teknik Komputer</option>
+            <option value="Teknologi Informasi">Teknologi Informasi</option>
+        </select>
+
+        <label for="tanggal">Tanggal Lahir:</label>
+        <input type="date" id="tanggal" name="tanggal" required>
+
+        <button type="submit">Tampilkan Data</button>
+    </form>
+
+    <div class="output" id="hasilOutput" style="display:none;">
+        <p><strong>Jurusan yang dipilih:</strong> <span id="outputJurusan"></span></p>
+        <p><strong>Tanggal yang dipilih:</strong> <span id="outputTanggal"></span></p>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('dataForm');
+    const outputDiv = document.getElementById('hasilOutput');
+    const outputJurusan = document.getElementById('outputJurusan');
+    const outputTanggal = document.getElementById('outputTanggal');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const jurusan = document.getElementById('pilihan').value;
+        const tanggal = document.getElementById('tanggal').value;
+
+        outputJurusan.textContent = jurusan;
+        outputTanggal.textContent = tanggal;
+        outputDiv.style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
